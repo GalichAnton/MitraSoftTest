@@ -1,8 +1,13 @@
 import { AxiosResponse } from "axios";
 import api from "./instance";
-import { IPhotoResponse } from "../types/ResponseTypes";
-export default class ImageService {
-  static async getImages(): Promise<AxiosResponse<IPhotoResponse>> {
-    return api.get<IPhotoResponse>(`search?query=nature&per_page=6`);
+import { IPhoto, IPhotosResponse } from "../types/ResponseTypes";
+export default class PhotoService {
+  static async getPhotos(
+    query: string
+  ): Promise<AxiosResponse<IPhotosResponse>> {
+    return api.get<IPhotosResponse>(`search?query=${query}&per_page=6`);
+  }
+  static async getPhoto(photoID: string): Promise<AxiosResponse<IPhoto>> {
+    return api.get<IPhoto>(`photos/${photoID}`);
   }
 }

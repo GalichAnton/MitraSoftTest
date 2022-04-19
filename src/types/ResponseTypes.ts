@@ -21,10 +21,12 @@ export interface IPhoto {
   alt: string;
 }
 
-export interface IPhotoResponse {
-  total_results: number;
-  page: number;
-  per_page: number;
-  photos: IPhoto[];
-  next_page: string;
+export interface IPhotosResponse {
+  data: {
+    total_results: number;
+    page: number;
+    per_page: number;
+    photos: IPhoto[];
+    next_page: string;
+  };
 }
